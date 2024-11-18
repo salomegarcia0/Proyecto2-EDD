@@ -4,6 +4,8 @@
  */
 package proyecto2.edd;
 
+import Interfaces.Inicio;
+
 /**
  *
  * @author salom
@@ -14,7 +16,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Inicio ini = new Inicio();
+        ini.setLocationRelativeTo(null);
+        ini.setResizable(false);
+        ini.setVisible(true);
     }
     
 }

@@ -165,7 +165,11 @@ public class CargarArchivo extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarBtnMouseClicked
 
     private void cargarArchivoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarArchivoBtnMouseClicked
-        
+        Menu menu = new Menu();
+        menu.setLocationRelativeTo(null);
+        menu.setResizable(false);
+        menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_cargarArchivoBtnMouseClicked
 
     /**

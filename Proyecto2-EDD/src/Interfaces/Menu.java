@@ -34,9 +34,9 @@ public class Menu extends javax.swing.JFrame {
         cargarArchivoPnl = new javax.swing.JPanel();
         cargarArchivoBtn = new javax.swing.JLabel();
         buscarPnl = new javax.swing.JPanel();
-        buscarBtn = new javax.swing.JLabel();
+        buscarTituloBtn = new javax.swing.JLabel();
         buscarAntepasdosPnl = new javax.swing.JPanel();
-        buscarAntepasadosBtn = new javax.swing.JLabel();
+        buscarNombresBtn = new javax.swing.JLabel();
         mostrarArbolPnl = new javax.swing.JPanel();
         mostrarArbolBtn = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -102,14 +102,14 @@ public class Menu extends javax.swing.JFrame {
 
         buscarPnl.setBackground(new java.awt.Color(0, 51, 0));
 
-        buscarBtn.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        buscarBtn.setForeground(new java.awt.Color(255, 255, 255));
-        buscarBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        buscarBtn.setText("BUSCAR");
-        buscarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buscarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        buscarTituloBtn.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        buscarTituloBtn.setForeground(new java.awt.Color(255, 255, 255));
+        buscarTituloBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        buscarTituloBtn.setText("BÚSQUEDA POR TITULO");
+        buscarTituloBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buscarTituloBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buscarBtnMouseClicked(evt);
+                buscarTituloBtnMouseClicked(evt);
             }
         });
 
@@ -117,25 +117,25 @@ public class Menu extends javax.swing.JFrame {
         buscarPnl.setLayout(buscarPnlLayout);
         buscarPnlLayout.setHorizontalGroup(
             buscarPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buscarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+            .addComponent(buscarTituloBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
         buscarPnlLayout.setVerticalGroup(
             buscarPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buscarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(buscarTituloBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
         jPanel1.add(buscarPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 340, 60));
 
         buscarAntepasdosPnl.setBackground(new java.awt.Color(0, 51, 0));
 
-        buscarAntepasadosBtn.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        buscarAntepasadosBtn.setForeground(new java.awt.Color(255, 255, 255));
-        buscarAntepasadosBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        buscarAntepasadosBtn.setText("BUSCAR ANTEPASADOS");
-        buscarAntepasadosBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buscarAntepasadosBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        buscarNombresBtn.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        buscarNombresBtn.setForeground(new java.awt.Color(255, 255, 255));
+        buscarNombresBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        buscarNombresBtn.setText("BÚSQUEDA POR NOMBRE");
+        buscarNombresBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buscarNombresBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buscarAntepasadosBtnMouseClicked(evt);
+                buscarNombresBtnMouseClicked(evt);
             }
         });
 
@@ -143,11 +143,11 @@ public class Menu extends javax.swing.JFrame {
         buscarAntepasdosPnl.setLayout(buscarAntepasdosPnlLayout);
         buscarAntepasdosPnlLayout.setHorizontalGroup(
             buscarAntepasdosPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buscarAntepasadosBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+            .addComponent(buscarNombresBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
         buscarAntepasdosPnlLayout.setVerticalGroup(
             buscarAntepasdosPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buscarAntepasadosBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(buscarNombresBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
         jPanel1.add(buscarAntepasdosPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 340, 60));
@@ -201,13 +201,21 @@ public class Menu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_cargarArchivoBtnMouseClicked
 
-    private void buscarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarBtnMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarBtnMouseClicked
+    private void buscarTituloBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTituloBtnMouseClicked
+        BusquedaNombres bu = new BusquedaNombres();
+        bu.setLocationRelativeTo(null);
+        bu.setResizable(false);
+        bu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buscarTituloBtnMouseClicked
 
-    private void buscarAntepasadosBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarAntepasadosBtnMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarAntepasadosBtnMouseClicked
+    private void buscarNombresBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarNombresBtnMouseClicked
+        BusquedaNombres bu = new BusquedaNombres();
+        bu.setLocationRelativeTo(null);
+        bu.setResizable(false);
+        bu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buscarNombresBtnMouseClicked
 
     private void mostrarArbolBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarArbolBtnMouseClicked
         // TODO add your handling code here:
@@ -254,10 +262,10 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel buscarAntepasadosBtn;
     private javax.swing.JPanel buscarAntepasdosPnl;
-    private javax.swing.JLabel buscarBtn;
+    private javax.swing.JLabel buscarNombresBtn;
     private javax.swing.JPanel buscarPnl;
+    private javax.swing.JLabel buscarTituloBtn;
     private javax.swing.JLabel cargarArchivoBtn;
     private javax.swing.JPanel cargarArchivoPnl;
     private javax.swing.JLabel jLabel1;

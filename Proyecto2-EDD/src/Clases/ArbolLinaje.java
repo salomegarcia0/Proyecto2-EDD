@@ -6,6 +6,7 @@ package Clases;
 
 import EDD.Arbol;
 import EDD.HashTable;
+import EDD.ListaSimple;
 
 /**
  * La clase ArbolLinaje representa una estructura que combina un árbol
@@ -24,16 +25,19 @@ public class ArbolLinaje {
     /**
      * Árbol para representar la jerarquía del linaje.
      */
-    private Arbol arbolLinaje;
+    private Arbol arbolL;
 
     /**
      * Constructor de la clase ArbolLinaje.
      * 
      * Inicializa la tabla hash con un tamaño predeterminado de 100 y crea una instancia de un árbol vacío.
      */
+    private String nombreLinaje;
+    
     public ArbolLinaje() {
         this.tablaLinaje = new HashTable(100);
-        this.arbolLinaje = new Arbol();
+        this.arbolL = new Arbol();
+        this.nombreLinaje = null;
     }
 
     /**
@@ -59,8 +63,8 @@ public class ArbolLinaje {
      * 
      * @return el árbol del linaje.
      */
-    public Arbol getArbolLinaje() {
-        return arbolLinaje;
+    public Arbol getArbolL() {
+        return arbolL;
     }
 
     /**
@@ -68,8 +72,52 @@ public class ArbolLinaje {
      * 
      * @param arbolLinaje el nuevo árbol a asignar.
      */
-    public void setArbolLinaje(Arbol arbolLinaje) {
-        this.arbolLinaje = arbolLinaje;
+    public void setArbolL(Arbol arbolLinaje) {
+        this.arbolL = arbolL;
+    }
+    
+    public String getNombreLinaje() {
+        return nombreLinaje;
+    }
+    
+    public void setNombreLinaje(String nombreLinaje) {
+        this.nombreLinaje = nombreLinaje;
+    }
+    
+    public void destruir(){
+        this.arbolL.destruir();
+        this.tablaLinaje.vaciar();
+    }
+    
+    public Persona[] buscarNombre(String nombre){
+        ListaSimple resultados = this.tablaLinaje.buscarNombre(nombre);
+        
+        if(!resultados.isEmpty()){
+            Persona[] arregloPersona = new Persona[resultados.getSize()];
+            for (int i = 0; i < resultados.getSize(); i++) {
+                Persona persona = (Persona) resultados.getValor(i);
+                arregloPersona[i]= persona;
+            }
+            
+            return arregloPersona;
+        }
+        
+        return null;
+    }
+    
+    public Persona[] buscarTitulo(String titulo){
+        ListaSimple resultados = this.tablaLinaje.buscarTituloMobiliario(titulo);
+        
+        if(!resultados.isEmpty()){
+            Persona[] arregloPersona = new Persona[resultados.getSize()];
+            for (int i = 0; i < resultados.getSize(); i++) {
+                Persona persona = (Persona) resultados.getValor(i);
+                arregloPersona[i]= persona;
+            }
+            
+            return arregloPersona;
+        }
+        
+        return null;
     }
 }
-

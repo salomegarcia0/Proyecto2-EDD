@@ -80,6 +80,55 @@ public class HashTable {
         return null;
     }
     
+    public ListaSimple buscarNombre(String nombre) {
+        ListaSimple resultado = new ListaSimple();
+
+        for (int i = 0; i < this.size; i++) {
+            if (!tabla[i].isEmpty()) {
+                Nodo temp = tabla[i].getFirst();
+                while (temp != null) {
+                    Persona personaAct = (Persona) temp.getData();
+                    if (personaAct.getMote() != null) {
+                        if (personaAct.getMote().toLowerCase().contains(nombre.toLowerCase())) {
+                            resultado.aggFinal(personaAct);
+                        } else if (personaAct.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                            String nombreUnico = personaAct.getNombre()+ " " + personaAct.getNumeral();
+                            resultado.aggFinal(personaAct);
+                        }
+                    } else {
+                        if (personaAct.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                            String nombreUnico = personaAct.getNombre()+ " " + personaAct.getNumeral();
+                            resultado.aggFinal(personaAct);
+                        }
+                    }
+                    temp = temp.getnext();
+                }
+            }
+        }
+
+        return resultado;
+    }   
+    public ListaSimple buscarTituloMobiliario(String titulo) {
+        ListaSimple personasFiltradas = new ListaSimple();
+        for (int i = 0; i < this.size; i++) {
+            if (!tabla[i].isEmpty()) {
+                Nodo temp = tabla[i].getFirst();
+                while (temp != null) {
+                    Persona personaAct = (Persona) temp.getData();
+                    if (personaAct.getTituloMobiliario()!= null) {
+                        if (personaAct.getTituloMobiliario().toLowerCase().contains(titulo.toLowerCase())) {
+                            personasFiltradas.aggFinal(personaAct);
+                        }
+                    }
+                    temp = temp.getnext();
+                }
+
+            }
+        }
+
+        return personasFiltradas;
+    }
+
     /**
      * 
      * @param clave

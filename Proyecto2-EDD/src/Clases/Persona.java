@@ -284,7 +284,20 @@ public class Persona {
     public void setComentariosMuerte(String comentariosMuerte) {
         this.comentariosMuerte = comentariosMuerte;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
+    public String getNombreUnico(){
+        if(this.mote != null){
+            return this.mote;
+        }
+        
+        return this.getNombre() + " " + this.getNumeral();
+    }
+    
+    
     /**
      * Retorna una representación textual de los datos de la persona.
      * 

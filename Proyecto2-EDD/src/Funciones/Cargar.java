@@ -51,12 +51,72 @@ public class Cargar {
     public void setPersonaRepetida(boolean personaRepetida) {
         this.personaRepetida = personaRepetida;
     }
+
+    public void cargar(String rutaArchivo) {
+        this.setPadreNoEncontrado(false);
+        this.setPersonaRepetida(false);
+        try (FileReader reader = new FileReader(rutaArchivo)) {
+            Gson gson = new Gson();
+            JsonObject jsonObj = gson.fromJson(reader, JsonObject.class);
+
+            for (String nombreCasa : jsonObj.keySet()) {
+                JsonArray miembros = jsonObj.getAsJsonArray(nombreCasa);
+                arbolLinaje.setNombreLinaje(nombreCasa);
+                for (JsonElement miembro : miembros) {
+                    JsonObject personaObj = miembro.getAsJsonObject();
+                    this.agregarHashTable(personaObj);
+                }
+            }
+
+            for (String nombreCasa : jsonObj.keySet()) {
+                JsonArray miembros = jsonObj.getAsJsonArray(nombreCasa);
+                for (JsonElement miembro : miembros) {
+                    JsonObject personaObj = miembro.getAsJsonObject();
+                    this.agregarArbol(personaObj);
+                }
+            }
+            
+           if(!this.sinError()){
+               arbolLinaje.destruir();
+           }
+
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+    }
     
     public boolean sinError(){
         return !this.padreNoEncontrado && !this.personaRepetida;
     }
 
-    private void agregarArbol(JsonObject personaObj) { //FALTA
+    private void agregarArbol(JsonObject personaObj){
+        String nombreCompleto = personaObj.keySet().iterator().next();
+        JsonArray atributos = personaObj.getAsJsonArray(nombreCompleto);
+
+        Persona personaNueva = crearPersona(nombreCompleto, atributos);
+
+        if (this.arbolLinaje.getArbolL().buscar(personaNueva.getNombreUnico()) == null) {
+            if (personaNueva.getPadre().equalsIgnoreCase("[Unknown]")) {
+                this.arbolLinaje.getArbolL().crearRaiz(personaNueva);
+            } else {
+                if (personaNueva.getPadre().contains("of his name")) {
+                    personaNueva.setPadre(personaNueva.getPadre().replaceAll("of his name", "").replaceAll(",", "").trim());
+
+                    if (!this.arbolLinaje.getArbolL().insertar(personaNueva.getPadre(), personaNueva)) {
+                        this.setPadreNoEncontrado(true);
+
+                    }
+                } else {
+
+                    if (!this.arbolLinaje.getArbolL().insertar(personaNueva.getPadre(), personaNueva)) {
+                        this.setPadreNoEncontrado(true);
+                    }
+                }
+            }
+
+        }else{
+            this.setPersonaRepetida(true);
+        }
 
     }
 
@@ -119,38 +179,6 @@ public class Cargar {
             }
         }
         return new Persona(nombreCompleto, numeral, padre, madre, mote, titulo, esposa, colorOjos, colorCabello, comentariosVida, comentariosMuerte);
-    }
-    
-    public void cargar(String rutaArchivo) { //FALTA FUNCION DEL ARBOL
-        this.setPadreNoEncontrado(false);
-        this.setPersonaRepetida(false);
-        try (FileReader reader = new FileReader(rutaArchivo)) {
-            Gson gson = new Gson();
-            JsonObject jsonObj = gson.fromJson(reader, JsonObject.class);
+    } 
 
-            for (String nombreCasa : jsonObj.keySet()) {
-                JsonArray miembros = jsonObj.getAsJsonArray(nombreCasa);
-                arbolLinaje.setNombreLinaje(nombreCasa);
-                for (JsonElement miembro : miembros) {
-                    JsonObject personaObj = miembro.getAsJsonObject();
-                    this.agregarHashTable(personaObj);
-                }
-            }
-
-            for (String nombreCasa : jsonObj.keySet()) {
-                JsonArray miembros = jsonObj.getAsJsonArray(nombreCasa);
-                for (JsonElement miembro : miembros) {
-                    JsonObject personaObj = miembro.getAsJsonObject();
-                    this.agregarArbol(personaObj);
-                }
-            }
-            
-           if(!this.sinError()){
-               arbolLinaje.destruir();
-           }
-
-        } catch (IOException e) {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
-        }
-    }
 }

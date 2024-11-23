@@ -4,17 +4,35 @@
  */
 package Interfaces;
 
+import Clases.Persona;
+import javax.swing.DefaultComboBoxModel;
+import Funciones.Validar;
+import static Interfaces.CargarArchivo.arbolApp;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author salom
  */
 public class BusquedaTitulos extends javax.swing.JFrame {
-
+    
+    DefaultComboBoxModel modeloResultado = new DefaultComboBoxModel();
+    private Validar validar = new Validar();
+    private Persona[] resultado;
+    
     /**
      * Creates new form BusquedaTitulos
      */
     public BusquedaTitulos() {
         initComponents();
+    }
+    
+    private void llenarComboBox(Persona[] arreglo) {
+        for (int i = 0; i < arreglo.length; i++) {
+            int numeroAsociado = i + 1;
+            String nombreResultado = numeroAsociado + ". " + arreglo[i].getNombreUnico();
+            modeloResultado.addElement(nombreResultado);
+        }
     }
 
     /**
@@ -30,7 +48,7 @@ public class BusquedaTitulos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         buscarBtn = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        resultadosPersona = new javax.swing.JComboBox<>();
         info = new javax.swing.JPanel();
         verInfoBtn = new javax.swing.JLabel();
         titulo = new javax.swing.JTextField();
@@ -39,7 +57,6 @@ public class BusquedaTitulos extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -83,11 +100,11 @@ public class BusquedaTitulos extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, -1, 50));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 430, 40));
+        resultadosPersona.setBackground(new java.awt.Color(255, 255, 255));
+        resultadosPersona.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        resultadosPersona.setModel(modeloResultado);
+        resultadosPersona.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(resultadosPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 430, 40));
 
         info.setBackground(new java.awt.Color(0, 51, 0));
 
@@ -153,11 +170,29 @@ public class BusquedaTitulos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarBtnMouseClicked
-        // TODO add your handling code here:
+        String nombreBuscar = titulo.getText();
+
+        if (arbolApp.buscarNombre(nombreBuscar) != null) {
+            resultado = arbolApp.buscarTitulo(nombreBuscar);
+            this.llenarComboBox(arbolApp.buscarTitulo(nombreBuscar));
+        } else {
+            resultado = null;
+            JOptionPane.showMessageDialog(null, "No se encontraron resultados de la busqueda.");
+        }
     }//GEN-LAST:event_buscarBtnMouseClicked
 
     private void verInfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verInfoBtnMouseClicked
-        // TODO add your handling code here:
+        if (resultado != null) {
+            String seleccion = (String) resultadosPersona.getSelectedItem();
+
+            String[] separarSeleccion = seleccion.split(".");
+
+            int numero = validar.validarNumeros(separarSeleccion[0]);
+            JOptionPane.showMessageDialog(null, resultado[numero].toString());
+           
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay resultados para ver detalles.");
+        }
     }//GEN-LAST:event_verInfoBtnMouseClicked
 
     private void menuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtnMouseClicked
@@ -207,11 +242,11 @@ public class BusquedaTitulos extends javax.swing.JFrame {
     private javax.swing.JLabel buscarBtn;
     private javax.swing.JLabel fondo;
     private javax.swing.JPanel info;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel menu;
     private javax.swing.JLabel menuBtn;
+    private javax.swing.JComboBox<String> resultadosPersona;
     private javax.swing.JTextField titulo;
     private javax.swing.JLabel tituloVentana;
     private javax.swing.JLabel verInfoBtn;

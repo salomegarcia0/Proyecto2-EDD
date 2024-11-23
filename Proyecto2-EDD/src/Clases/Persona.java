@@ -72,7 +72,7 @@ public class Persona {
      * 
      * Inicializa todos los atributos a valores nulos.
      */
-    public Persona() {
+    public Persona(String nombreCompleto, String numeral1, String padre1, String madre1, String mote1, String titulo, String esposa1, String colorOjos1, String colorCabello, String comentariosVida1, String comentariosMuerte1) {
         this.nombre = null;
         this.numeral = null;
         this.padre = null;

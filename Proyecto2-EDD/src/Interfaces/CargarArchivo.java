@@ -18,7 +18,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author salom
  */
 public class CargarArchivo extends javax.swing.JFrame {
-    
     private Cargar cargarJSON = new Cargar();
     public static ArbolLinaje arbolApp = new ArbolLinaje();
     /**

@@ -12,7 +12,7 @@ package Clases;
  * @author salom
  */
 public class Persona {
-    /**
+   /**
      * Nombre de la persona.
      */
     String nombre;
@@ -66,25 +66,22 @@ public class Persona {
      * Comentarios generales sobre la muerte de la persona.
      */
     String comentariosMuerte;
-    
-    /**
-     * Constructor por defecto de la clase Persona.
-     * 
-     * Inicializa todos los atributos a valores nulos.
-     */
-    public Persona(String nombreCompleto, String numeral1, String padre1, String madre1, String mote1, String titulo, String esposa1, String colorOjos1, String colorCabello, String comentariosVida1, String comentariosMuerte1) {
-        this.nombre = null;
-        this.numeral = null;
-        this.padre = null;
-        this.madre = null;
-        this.mote = null;
-        this.tituloNobiliario = null;
-        this.esposa = null;
-        this.colorOjos = null;
-        this.colorPelo = null;
-        this.comentariosVida = null;
-        this.comentariosMuerte = null;
+
+    public Persona(String nombre, String numeral, String padre, String madre, String mote, String tituloNobiliario, String esposa, String colorOjos, String colorPelo, String comentariosVida, String comentariosMuerte) {
+        this.nombre = nombre;
+        this.numeral = numeral;
+        this.padre = padre;
+        this.madre = madre;
+        this.mote = mote;
+        this.tituloNobiliario = tituloNobiliario;
+        this.esposa = esposa;
+        this.colorOjos = colorOjos;
+        this.colorPelo = colorPelo;
+        this.comentariosVida = comentariosVida;
+        this.comentariosMuerte = comentariosMuerte;
     }
+    
+    
     
     // Métodos getters y setters
     /**
@@ -285,10 +282,6 @@ public class Persona {
         this.comentariosMuerte = comentariosMuerte;
     }
     
-    /**
-     * 
-     * @return 
-     */
     public String getNombreUnico(){
         if(this.mote != null){
             return this.mote;
@@ -296,8 +289,7 @@ public class Persona {
         
         return this.getNombre() + " " + this.getNumeral();
     }
-    
-    
+
     /**
      * Retorna una representación textual de los datos de la persona.
      * 
@@ -319,4 +311,5 @@ public class Persona {
         sb.append("\nComentarios de su Muerte: ").append(comentariosMuerte);
         return sb.toString();
     }
+
 }

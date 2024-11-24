@@ -86,7 +86,7 @@ public class Cargar {
     }
     
     public boolean sinError(){
-        return !this.padreNoEncontrado && !this.personaRepetida;
+        return !this.padreNoEncontrado && !this.personaRepetida; 
     }
 
     private void agregarArbol(JsonObject personaObj){
@@ -113,7 +113,6 @@ public class Cargar {
                     }
                 }
             }
-
         }else{
             this.setPersonaRepetida(true);
         }

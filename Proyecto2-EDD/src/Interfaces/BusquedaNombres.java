@@ -4,19 +4,38 @@
  */
 package Interfaces;
 
+import Clases.Persona;
+import EDD.Arbol;
+import Funciones.Validar;
+import static Interfaces.CargarArchivo.arbolApp;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author salom
  */
 public class BusquedaNombres extends javax.swing.JFrame {
-
+    
+    DefaultComboBoxModel modeloResultado = new DefaultComboBoxModel();
+    private Validar validar = new Validar();
+    private Persona[] resultado;
+    
     /**
      * Creates new form BusquedaNombres
      */
     public BusquedaNombres() {
         initComponents();
     }
-
+    
+    private void llenarComboBox(Persona[] arreglo) {
+        for (int i = 0; i < arreglo.length; i++) {
+            int numeroAsociado = i + 1;
+            String nombreResultado = numeroAsociado + ". " + arreglo[i].getNombreUnico();
+            modeloResultado.addElement(nombreResultado);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,14 +48,14 @@ public class BusquedaNombres extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        resultadosPersona = new javax.swing.JComboBox<>();
         verInfo = new javax.swing.JPanel();
         infoBtn = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         buscarBtn = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         menuBtn = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        inputNombre = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,9 +74,9 @@ public class BusquedaNombres extends javax.swing.JFrame {
         jLabel1.setText("Por favor, ingrese el nombre del familiar que desea buscar:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 390, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 410, 40));
+        resultadosPersona.setBackground(new java.awt.Color(255, 255, 255));
+        resultadosPersona.setModel(modeloResultado);
+        jPanel1.add(resultadosPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 410, 40));
 
         verInfo.setBackground(new java.awt.Color(0, 51, 0));
         verInfo.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,10 +159,10 @@ public class BusquedaNombres extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, 200, 50));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 280, 50));
+        inputNombre.setBackground(new java.awt.Color(255, 255, 255));
+        inputNombre.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        inputNombre.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(inputNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 280, 50));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/3.png"))); // NOI18N
         jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
@@ -162,11 +181,30 @@ public class BusquedaNombres extends javax.swing.JFrame {
     }//GEN-LAST:event_menuBtnMouseClicked
 
     private void infoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoBtnMouseClicked
-        // TODO add your handling code here:
+        if (resultado != null) {
+            String seleccion = (String) resultadosPersona.getSelectedItem();
+
+            String[] separarSeleccion = seleccion.split(".");
+
+            int numero = validar.validarNumeros(separarSeleccion[0]);
+
+            Arbol descendiente = new Arbol();
+            descendiente.setRoot(arbolApp.getArbolL().buscar(resultado[numero].getNombreUnico()));
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay resultados para ver detalles.");
+        }
     }//GEN-LAST:event_infoBtnMouseClicked
 
     private void buscarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarBtnMouseClicked
-        // TODO add your handling code here:
+        String nombreBuscar = inputNombre.getText();
+
+        if (arbolApp.buscarNombre(nombreBuscar) != null) {
+            resultado = arbolApp.buscarNombre(nombreBuscar);
+            this.llenarComboBox(arbolApp.buscarNombre(nombreBuscar));
+        } else {
+            resultado = null;
+            JOptionPane.showMessageDialog(null, "No se encontraron resultados de la busqueda.");
+        }
     }//GEN-LAST:event_buscarBtnMouseClicked
 
     /**
@@ -208,14 +246,14 @@ public class BusquedaNombres extends javax.swing.JFrame {
     private javax.swing.JLabel buscarBtn;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel infoBtn;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField inputNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel menuBtn;
+    private javax.swing.JComboBox<String> resultadosPersona;
     private javax.swing.JPanel verInfo;
     // End of variables declaration//GEN-END:variables
 }

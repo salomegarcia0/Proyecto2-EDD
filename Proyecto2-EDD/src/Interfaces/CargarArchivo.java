@@ -172,6 +172,9 @@ public class CargarArchivo extends javax.swing.JFrame {
         cargarJSON.cargar(ruta.getText());
         
         if(cargarJSON.sinError()){
+            
+            arbolApp = cargarJSON.getArbolLinaje();
+            arbolApp.getArbolL().mostrar();
             Menu menu = new Menu();
             menu.setLocationRelativeTo(null);
             menu.setResizable(false);

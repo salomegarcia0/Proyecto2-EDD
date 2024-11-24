@@ -196,14 +196,18 @@ public class BusquedaNombres extends javax.swing.JFrame {
     }//GEN-LAST:event_infoBtnMouseClicked
 
     private void buscarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarBtnMouseClicked
-        String nombreBuscar = inputNombre.getText();
-
-        if (arbolApp.buscarNombre(nombreBuscar) != null) {
-            resultado = arbolApp.buscarNombre(nombreBuscar);
-            this.llenarComboBox(arbolApp.buscarNombre(nombreBuscar));
-        } else {
+        if(!inputNombre.getText().isEmpty()){
+            String nombreBuscado = inputNombre.getText();
+            if (arbolApp.buscarNombre(nombreBuscado) != null) {
+            resultado = arbolApp.buscarNombre(nombreBuscado);
+            this.llenarComboBox(arbolApp.buscarNombre(nombreBuscado));
+            } else {
             resultado = null;
             JOptionPane.showMessageDialog(null, "No se encontraron resultados de la busqueda.");
+            }
+            inputNombre.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null,"Debe de ingresar un nombre.");
         }
     }//GEN-LAST:event_buscarBtnMouseClicked
 

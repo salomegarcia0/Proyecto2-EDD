@@ -103,16 +103,16 @@ public class VerGeneraciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void verGeneracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verGeneracionMouseClicked
-        int nivel = (int) numeroGeneracion.getSelectedItem();
-        ListaSimple resultados = arbolApp.getArbolL().listarNivel(nivel);
+       // int nivel = (int) numeroGeneracion.getSelectedItem();
+       // ListaSimple resultados = arbolApp.getArbolL().listarNivel(nivel);
         
-        String resultado = "Generacion: " + nivel + ":\n";
-        for (int i = 0; i < resultados.getSize(); i++) {
-            Persona persona = (Persona) resultados.getValor(i);
-            resultado += persona.toString() + "\n\n";
-        }
+       // String resultado = "Generacion: " + nivel + ":\n";
+       // for (int i = 0; i < resultados.getSize(); i++) {
+        //    Persona persona = (Persona) resultados.getValor(i);
+        //    resultado += persona.toString() + "\n\n";
+        //}
         
-        resultadoStr.setText(resultado);
+        //resultadoStr.setText(resultado);
     }//GEN-LAST:event_verGeneracionMouseClicked
 
     /**

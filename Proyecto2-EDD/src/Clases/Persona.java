@@ -12,7 +12,7 @@ package Clases;
  * @author salom
  */
 public class Persona {
-   /**
+    /**
      * Nombre de la persona.
      */
     String nombre;
@@ -66,7 +66,26 @@ public class Persona {
      * Comentarios generales sobre la muerte de la persona.
      */
     String comentariosMuerte;
-
+    
+    /**
+    * Constructor de la clase Persona.
+    * 
+    * Este constructor inicializa todos los atributos de la clase `Persona` con los valores proporcionados.
+    * Cada parámetro corresponde a un atributo específico de la persona, como su nombre, numeral, padres, 
+    * mote, título nobiliario, esposa, color de ojos, color de pelo, y comentarios sobre su vida y muerte.
+    * 
+    * @param nombre El nombre de la persona.
+    * @param numeral El numeral asociado a la persona.
+    * @param padre El nombre del padre de la persona.
+    * @param madre El nombre de la madre de la persona.
+    * @param mote Un mote o apodo de la persona.
+    * @param tituloNobiliario El título nobiliario de la persona (si aplica).
+    * @param esposa El nombre de la esposa de la persona (si aplica).
+    * @param colorOjos El color de ojos de la persona.
+    * @param colorPelo El color de pelo de la persona.
+    * @param comentariosVida Comentarios relacionados con la vida de la persona.
+    * @param comentariosMuerte Comentarios relacionados con la muerte de la persona.
+    */
     public Persona(String nombre, String numeral, String padre, String madre, String mote, String tituloNobiliario, String esposa, String colorOjos, String colorPelo, String comentariosVida, String comentariosMuerte) {
         this.nombre = nombre;
         this.numeral = numeral;
@@ -80,8 +99,6 @@ public class Persona {
         this.comentariosVida = comentariosVida;
         this.comentariosMuerte = comentariosMuerte;
     }
-    
-    
     
     // Métodos getters y setters
     /**
@@ -282,6 +299,16 @@ public class Persona {
         this.comentariosMuerte = comentariosMuerte;
     }
     
+    /**
+    * Obtiene un nombre único para identificar al objeto actual.
+    * 
+    * Si el objeto tiene un mote asignado, se devuelve ese mote. 
+    * De lo contrario, se genera un nombre único concatenando el nombre 
+    * del objeto con su numeral.
+    * 
+    * @return un nombre único, ya sea el mote (si está disponible) 
+    *         o una combinación del nombre y el numeral.
+    */
     public String getNombreUnico(){
         if(this.mote != null){
             return this.mote;

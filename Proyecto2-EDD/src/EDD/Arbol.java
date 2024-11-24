@@ -55,10 +55,23 @@ public class Arbol {
         return this.root == null;
     }
     
+    /**
+    * Destruye el árbol estableciendo su raíz como null.
+    * 
+    * Este método elimina toda la estructura del árbol al establecer la raíz en null,
+    * lo que implica que ya no habrá referencias a los nodos existentes en el árbol.
+    */
     public void destruir(){
         this.root = null;
     }
     
+    /**
+    * Crea una nueva raíz para el árbol utilizando una instancia de `Persona`.
+    * 
+    * Este método inicializa el árbol con un nuevo nodo raíz que contiene la persona proporcionada.
+    * 
+    * @param persona La persona que será asignada como dato de la nueva raíz.
+    */
     public void crearRaiz(Persona persona){
         NodoArbol raizNueva = new NodoArbol(persona);
         this.setRoot(raizNueva);
@@ -119,6 +132,16 @@ public class Arbol {
         return null;
     }
     
+    /**
+    * Busca un nodo en el árbol cuyo dato coincida con el nombre especificado.
+    * 
+    * Este método realiza un recorrido en anchura (BFS) para buscar un nodo en el árbol
+    * que contenga una instancia de `Persona` con un nombre que coincida (ignorando mayúsculas y minúsculas).
+    * 
+    * @param nombre El nombre de la persona que se desea buscar en el árbol.
+    * @return El nodo que contiene la persona con el nombre buscado. 
+    *         Si no se encuentra ningún nodo con ese nombre o el árbol está vacío, retorna null.
+    */    
     public NodoArbol buscarNombre(String nombre) {
         if (this.isEmpty()) {
             return null;
@@ -173,7 +196,15 @@ public class Arbol {
             System.out.println("Este arbol esta vacio.");
         }
     }
-
+        
+    /**
+    * Calcula el nivel máximo del árbol.
+    * 
+    * Este método recorre el árbol utilizando una cola para realizar un recorrido en anchura (BFS).
+    * Determina el nivel máximo al que llega cualquier nodo en el árbol.
+    * 
+    * @return El nivel máximo del árbol. Si el árbol está vacío, retorna 0.
+    */
     public int maximoNivel() {
         if (this.isEmpty()) {
             return 0; // 
@@ -196,6 +227,16 @@ public class Arbol {
         return maxNivel;
     }
 
+    /**
+    * Obtiene todos los nodos en un nivel específico del árbol.
+    * 
+    * Este método realiza un recorrido en anchura (BFS) para encontrar y retornar 
+    * todos los nodos que se encuentran en el nivel especificado.
+    * 
+    * @param nivelBuscado El nivel que se desea buscar en el árbol.
+    * @return Una lista con los datos de los nodos que están en el nivel buscado. 
+    *         Si el árbol está vacío o no hay nodos en ese nivel, retorna una lista vacía.
+    */
     public ListaSimple obtenerNodosEnNivel(int nivelBuscado) {
         ListaSimple nodosEnNivel = new ListaSimple();
         if (this.isEmpty()) {
@@ -219,6 +260,16 @@ public class Arbol {
         return nodosEnNivel;
     }
     
+    /**
+    * Busca los ancestros de un nodo específico en el árbol.
+    * 
+    * Este método recorre hacia arriba el árbol desde el nodo especificado, 
+    * recopilando todos los datos de los ancestros hasta llegar a la raíz.
+    * 
+    * @param nodoA El nodo del cual se desean buscar los ancestros.
+    * @return Una lista con los datos de los ancestros del nodo. 
+    *         Si el nodo es nulo, retorna null.
+    */    
     public ListaSimple buscarAncestros(NodoArbol nodoA){
         if(nodoA == null){
             return null;

@@ -4,6 +4,8 @@
  */
 package Interfaces;
 
+import EDD.ListaSimple;
+import static Interfaces.CargarArchivo.arbolApp;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -32,9 +34,9 @@ public class VerGeneraciones extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        resultadosPersonas = new javax.swing.JComboBox<>();
+        generacion = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        verGeneracion = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
@@ -60,21 +62,26 @@ public class VerGeneraciones extends javax.swing.JFrame {
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 400, 230));
 
-        resultadosPersonas.setBackground(new java.awt.Color(255, 255, 255));
-        resultadosPersonas.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        resultadosPersonas.setForeground(new java.awt.Color(51, 51, 51));
-        resultadosPersonas.setModel(modeloResultado);
-        getContentPane().add(resultadosPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 280, 50));
+        generacion.setBackground(new java.awt.Color(255, 255, 255));
+        generacion.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        generacion.setForeground(new java.awt.Color(51, 51, 51));
+        generacion.setModel(modeloResultado);
+        getContentPane().add(generacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 280, 50));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 0));
         jPanel1.setForeground(new java.awt.Color(0, 51, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("BUSCAR");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 50));
+        verGeneracion.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        verGeneracion.setForeground(new java.awt.Color(255, 255, 255));
+        verGeneracion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        verGeneracion.setText("BUSCAR");
+        verGeneracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verGeneracionMouseClicked(evt);
+            }
+        });
+        jPanel1.add(verGeneracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 90, 50));
 
@@ -94,6 +101,19 @@ public class VerGeneraciones extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void verGeneracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verGeneracionMouseClicked
+        int nivel = (int) numeroGeneracion.getSelectedItem();
+        ListaSimple resultados = arbolApp.getArbolL().listarNivel(nivel);
+        
+        String resultado = "Generacion: " + nivel + ":\n";
+        for (int i = 0; i < resultados.getSize(); i++) {
+            Persona persona = (Persona) resultados.getValor(i);
+            resultado += persona.toString() + "\n\n";
+        }
+        
+        resultadoStr.setText(resultado);
+    }//GEN-LAST:event_verGeneracionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -132,13 +152,13 @@ public class VerGeneraciones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> generacion;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JComboBox<String> resultadosPersonas;
+    private javax.swing.JLabel verGeneracion;
     // End of variables declaration//GEN-END:variables
 }

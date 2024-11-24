@@ -167,10 +167,7 @@ public class Menu extends javax.swing.JFrame {
         );
         buscarAntepasdosPnlLayout.setVerticalGroup(
             buscarAntepasdosPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarAntepasdosPnlLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buscarNombresBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(buscarNombresBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         jPanel1.add(buscarAntepasdosPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 340, 50));
@@ -211,6 +208,11 @@ public class Menu extends javax.swing.JFrame {
         mostrarAntepasadosBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mostrarAntepasadosBtn.setText("MOSTRAR ANTEPASADOS");
         mostrarAntepasadosBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mostrarAntepasadosBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostrarAntepasadosBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -232,6 +234,11 @@ public class Menu extends javax.swing.JFrame {
         mostrarGeneracionesBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mostrarGeneracionesBtn.setText("MOSTRAR GENERACIONES");
         mostrarGeneracionesBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mostrarGeneracionesBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostrarGeneracionesBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -312,6 +319,22 @@ public class Menu extends javax.swing.JFrame {
         this.dispose();
         JOptionPane.showMessageDialog(null, "¡Gracias, vuelva pronto!");
     }//GEN-LAST:event_salirBtnMouseClicked
+
+    private void mostrarAntepasadosBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarAntepasadosBtnMouseClicked
+        VerAntepasados va = new VerAntepasados();
+        va.setLocationRelativeTo(null);
+        va.setResizable(false);
+        va.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mostrarAntepasadosBtnMouseClicked
+
+    private void mostrarGeneracionesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarGeneracionesBtnMouseClicked
+        VerGeneraciones vg = new VerGeneraciones();
+        vg.setLocationRelativeTo(null);
+        vg.setResizable(false);
+        vg.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mostrarGeneracionesBtnMouseClicked
 
     /**
      * @param args the command line arguments

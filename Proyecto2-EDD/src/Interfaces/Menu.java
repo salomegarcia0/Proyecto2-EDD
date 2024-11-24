@@ -39,6 +39,12 @@ public class Menu extends javax.swing.JFrame {
         buscarNombresBtn = new javax.swing.JLabel();
         mostrarArbolPnl = new javax.swing.JPanel();
         mostrarArbolBtn = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        mostrarAntepasadosBtn = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        mostrarGeneracionesBtn = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        verDiagramabtn = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -65,14 +71,20 @@ public class Menu extends javax.swing.JFrame {
         salirPnl.setLayout(salirPnlLayout);
         salirPnlLayout.setHorizontalGroup(
             salirPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(salirBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+            .addGroup(salirPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(salirBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addContainerGap())
         );
         salirPnlLayout.setVerticalGroup(
             salirPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(salirBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, salirPnlLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(salirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jPanel1.add(salirPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 340, 60));
+        jPanel1.add(salirPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 340, 50));
 
         cargarArchivoPnl.setBackground(new java.awt.Color(0, 51, 0));
 
@@ -91,14 +103,16 @@ public class Menu extends javax.swing.JFrame {
         cargarArchivoPnl.setLayout(cargarArchivoPnlLayout);
         cargarArchivoPnlLayout.setHorizontalGroup(
             cargarArchivoPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cargarArchivoBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+            .addComponent(cargarArchivoBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
         cargarArchivoPnlLayout.setVerticalGroup(
             cargarArchivoPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cargarArchivoBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cargarArchivoPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cargarArchivoBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
         );
 
-        jPanel1.add(cargarArchivoPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 340, 60));
+        jPanel1.add(cargarArchivoPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 340, 50));
 
         buscarPnl.setBackground(new java.awt.Color(0, 51, 0));
 
@@ -117,14 +131,20 @@ public class Menu extends javax.swing.JFrame {
         buscarPnl.setLayout(buscarPnlLayout);
         buscarPnlLayout.setHorizontalGroup(
             buscarPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buscarTituloBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+            .addGroup(buscarPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buscarTituloBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addContainerGap())
         );
         buscarPnlLayout.setVerticalGroup(
             buscarPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buscarTituloBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addGroup(buscarPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buscarTituloBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
 
-        jPanel1.add(buscarPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 340, 60));
+        jPanel1.add(buscarPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 340, 50));
 
         buscarAntepasdosPnl.setBackground(new java.awt.Color(0, 51, 0));
 
@@ -147,10 +167,13 @@ public class Menu extends javax.swing.JFrame {
         );
         buscarAntepasdosPnlLayout.setVerticalGroup(
             buscarAntepasdosPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buscarNombresBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarAntepasdosPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buscarNombresBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel1.add(buscarAntepasdosPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 340, 60));
+        jPanel1.add(buscarAntepasdosPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 340, 50));
 
         mostrarArbolPnl.setBackground(new java.awt.Color(0, 51, 0));
         mostrarArbolPnl.setForeground(new java.awt.Color(0, 51, 0));
@@ -174,16 +197,80 @@ public class Menu extends javax.swing.JFrame {
         );
         mostrarArbolPnlLayout.setVerticalGroup(
             mostrarArbolPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mostrarArbolBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostrarArbolPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mostrarArbolBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
         );
 
-        jPanel1.add(mostrarArbolPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 340, 60));
+        jPanel1.add(mostrarArbolPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 340, 50));
+
+        jPanel2.setBackground(new java.awt.Color(0, 51, 0));
+
+        mostrarAntepasadosBtn.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        mostrarAntepasadosBtn.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarAntepasadosBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mostrarAntepasadosBtn.setText("MOSTRAR ANTEPASADOS");
+        mostrarAntepasadosBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostrarAntepasadosBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostrarAntepasadosBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 340, 50));
+
+        jPanel3.setBackground(new java.awt.Color(0, 51, 0));
+
+        mostrarGeneracionesBtn.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        mostrarGeneracionesBtn.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarGeneracionesBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mostrarGeneracionesBtn.setText("MOSTRAR GENERACIONES");
+        mostrarGeneracionesBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostrarGeneracionesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mostrarGeneracionesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 340, 50));
+
+        jPanel4.setBackground(new java.awt.Color(0, 51, 0));
+
+        verDiagramabtn.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        verDiagramabtn.setForeground(new java.awt.Color(255, 255, 255));
+        verDiagramabtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        verDiagramabtn.setText("VER DIAGRAMA DE CLASES");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(verDiagramabtn, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(verDiagramabtn, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 340, 50));
 
         jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 51, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("MENÚ");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 60, 270, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 270, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/3.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
@@ -271,9 +358,15 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel mostrarAntepasadosBtn;
     private javax.swing.JLabel mostrarArbolBtn;
     private javax.swing.JPanel mostrarArbolPnl;
+    private javax.swing.JLabel mostrarGeneracionesBtn;
     private javax.swing.JLabel salirBtn;
     private javax.swing.JPanel salirPnl;
+    private javax.swing.JLabel verDiagramabtn;
     // End of variables declaration//GEN-END:variables
 }

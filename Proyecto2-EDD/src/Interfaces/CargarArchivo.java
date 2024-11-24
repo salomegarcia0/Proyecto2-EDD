@@ -4,6 +4,8 @@
  */
 package Interfaces;
 
+import Clases.ArbolLinaje;
+import Funciones.Cargar;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,7 +18,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author salom
  */
 public class CargarArchivo extends javax.swing.JFrame {
-
+    
+    private Cargar cargarJSON = new Cargar();
+    public static ArbolLinaje arbolApp = new ArbolLinaje();
     /**
      * Creates new form CargarArchivo
      */
@@ -165,11 +169,18 @@ public class CargarArchivo extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarBtnMouseClicked
 
     private void cargarArchivoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarArchivoBtnMouseClicked
-        Menu menu = new Menu();
-        menu.setLocationRelativeTo(null);
-        menu.setResizable(false);
-        menu.setVisible(true);
-        this.dispose();
+        cargarJSON.cargar(ruta.getText());
+        
+        if(cargarJSON.sinError()){
+            Menu menu = new Menu();
+            menu.setLocationRelativeTo(null);
+            menu.setResizable(false);
+            menu.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Hay errores en el JSON");
+        }
+        
     }//GEN-LAST:event_cargarArchivoBtnMouseClicked
 
     /**

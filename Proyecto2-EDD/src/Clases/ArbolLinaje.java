@@ -34,11 +34,18 @@ public class ArbolLinaje {
      */
     private String nombreLinaje;
     
+    /**
+    * Constructor de la clase ArbolLinaje.
+    * 
+    * Este constructor inicializa las estructuras internas necesarias para gestionar el linaje:
+    * - Establece el nombre del linaje como null, indicando que aún no ha sido asignado.
+    */
     public ArbolLinaje() {
         this.tablaLinaje = new HashTable(100);
         this.arbolL = new Arbol();
         this.nombreLinaje = null;
     }
+
 
     /**
      * Obtiene la tabla hash utilizada para el almacenamiento de datos del linaje.
@@ -76,43 +83,73 @@ public class ArbolLinaje {
         this.arbolL = arbolL;
     }
     
+    /**
+    * Obtiene el nombre del linaje.
+    * 
+    * @return el nombre del linaje como una cadena.
+    */
     public String getNombreLinaje() {
-        return nombreLinaje;
+    return nombreLinaje;
     }
-    
+
+    /**
+     * Establece el nombre del linaje.
+    *   
+    * @param nombreLinaje el nuevo nombre del linaje a asignar.
+    */
     public void setNombreLinaje(String nombreLinaje) {
         this.nombreLinaje = nombreLinaje;
     }
-    
-    public void destruir(){
+
+    /**
+    * Destruye las estructuras de datos internas asociadas al linaje.
+    * 
+    * Este método elimina el contenido del árbol y vacía la tabla hash 
+    * para liberar los recursos asociados.
+    */
+    public void destruir() {
         this.arbolL.destruir();
         this.tablaLinaje.vaciar();
     }
-    
-    public Persona[] buscarNombre(String nombre){
+
+    /**
+    * Busca personas por nombre en la tabla hash del linaje.
+    * 
+    * @param nombre el nombre de la persona a buscar.
+    * @return un arreglo de objetos Persona que coinciden con el nombre
+    *         buscado, o null si no se encuentran coincidencias.
+    */
+    public Persona[] buscarNombre(String nombre) {
         ListaSimple resultados = this.tablaLinaje.buscarNombre(nombre);
-        
-        if(!resultados.isEmpty()){
+
+        if (!resultados.isEmpty()) {
             Persona[] arregloPersona = new Persona[resultados.getSize()];
             for (int i = 0; i < resultados.getSize(); i++) {
                 Persona persona = (Persona) resultados.getValor(i);
-                arregloPersona[i]= persona;
+                arregloPersona[i] = persona;
             }
-            
+
             return arregloPersona;
         }
-        
+
         return null;
     }
-    
-    public Persona[] buscarTitulo(String titulo){
+
+    /**
+    * Busca personas por título de mobiliario en la tabla hash del linaje.
+    * 
+    * @param titulo el título de mobiliario a buscar.
+    * @return un arreglo de objetos Persona que coinciden con el título
+    *         buscado, o null si no se encuentran coincidencias.
+    */
+    public Persona[] buscarTitulo(String titulo) {
         ListaSimple resultados = this.tablaLinaje.buscarTituloMobiliario(titulo);
-        
-        if(!resultados.isEmpty()){
+
+        if (!resultados.isEmpty()) {
             Persona[] arregloPersona = new Persona[resultados.getSize()];
             for (int i = 0; i < resultados.getSize(); i++) {
                 Persona persona = (Persona) resultados.getValor(i);
-                arregloPersona[i]= persona;
+                arregloPersona[i] = persona;
             }
             
             return arregloPersona;

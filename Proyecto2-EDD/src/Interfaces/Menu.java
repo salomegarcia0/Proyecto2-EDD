@@ -317,7 +317,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void mostrarArbolBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarArbolBtnMouseClicked
         System.setProperty("org.graphstream.ui", "swing");
-        MostrarArbol mostarArbol = new MostrarArbol(arbolApp);
+        MostrarArbol mostarArbol = new MostrarArbol(arbolApp.getArbolL());
         mostarArbol.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_mostrarArbolBtnMouseClicked

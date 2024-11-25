@@ -36,10 +36,6 @@ public class MostrarArbol extends JFrame{
         volverMenu();
     }
 
-    public MostrarArbol(ArbolLinaje arbolApp) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     private void setearInterfaz() {
         setTitle("Visualizador de Árbol");
         setSize(800, 600);
@@ -123,20 +119,6 @@ public class MostrarArbol extends JFrame{
         });
         add(botonRegresar, BorderLayout.SOUTH);
     }
-
-    private void cerrarVisor() {
-        if (visor != null) {
-            visor.disableAutoLayout();
-            visor.close();
-        }
-        if (panelVista != null) {
-            remove(panelVista);
-            panelVista = null;
-        }
-    }
-    
-    
-
 
      /**
      * Cierra la ventana del visor.

@@ -4,19 +4,23 @@
  */
 package Interfaces;
 
+import EDD.Arbol;
+import Funciones.MostrarArbol;
 import javax.swing.JOptionPane;
+import static Interfaces.CargarArchivo.arbolApp;
 
 /**
  *
  * @author salom
  */
 public class Menu extends javax.swing.JFrame {
-
+    private Arbol arbol;
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        arbol = new Arbol();
     }
 
     /**
@@ -312,7 +316,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarNombresBtnMouseClicked
 
     private void mostrarArbolBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarArbolBtnMouseClicked
-        // TODO add your handling code here:
+        System.setProperty("org.graphstream.ui", "swing");
+        MostrarArbol mostarArbol = new MostrarArbol(arbolApp);
+        mostarArbol.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_mostrarArbolBtnMouseClicked
 
     private void salirBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirBtnMouseClicked

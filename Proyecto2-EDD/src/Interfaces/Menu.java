@@ -261,6 +261,11 @@ public class Menu extends javax.swing.JFrame {
         verDiagramabtn.setForeground(new java.awt.Color(255, 255, 255));
         verDiagramabtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         verDiagramabtn.setText("VER DIAGRAMA DE CLASES");
+        verDiagramabtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verDiagramabtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -340,6 +345,10 @@ public class Menu extends javax.swing.JFrame {
         vg.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_mostrarGeneracionesBtnMouseClicked
+
+    private void verDiagramabtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verDiagramabtnMouseClicked
+
+    }//GEN-LAST:event_verDiagramabtnMouseClicked
 
     /**
      * @param args the command line arguments

@@ -169,6 +169,7 @@ public class Arbol {
         return null;
     }    
     
+    
     /**
      * Muestra el contenido del árbol en un recorrido por niveles.
      * Imprime los datos de cada nodo en la consola.

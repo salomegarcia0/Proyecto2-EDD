@@ -143,6 +143,25 @@ public class HashTable {
         return resultado;
     }  
     
+    public ListaSimple buscarNombreCoincidencias(String nombre) {
+        ListaSimple resultado = new ListaSimple();
+
+        for (int i = 0; i < this.size; i++) {
+            if (!tabla[i].isEmpty()) {
+                Nodo temp = tabla[i].getFirst();
+                while (temp != null) {
+                    Persona personaAct = (Persona) temp.getData();
+                        if (personaAct.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                            resultado.aggFinal(personaAct);
+                        }
+                    }
+                    temp = temp.getnext();
+                }
+            }
+
+        return resultado;
+    }
+    
     /**
     * Busca todas las personas que tengan un título mobiliario específico.
     * 

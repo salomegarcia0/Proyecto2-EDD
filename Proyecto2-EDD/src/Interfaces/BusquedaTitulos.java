@@ -170,11 +170,11 @@ public class BusquedaTitulos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarBtnMouseClicked
-        String nombreBuscar = titulo.getText();
+        String tituloBuscar = titulo.getText();
 
-        if (arbolApp.buscarNombre(nombreBuscar) != null) {
-            resultado = arbolApp.buscarTitulo(nombreBuscar);
-            this.llenarComboBox(arbolApp.buscarTitulo(nombreBuscar));
+        if (arbolApp.buscarTitulo(tituloBuscar) != null) {
+            resultado = arbolApp.buscarTitulo(tituloBuscar);
+            this.llenarComboBox(arbolApp.buscarTitulo(tituloBuscar));
         } else {
             resultado = null;
             JOptionPane.showMessageDialog(null, "No se encontraron resultados de la busqueda.");
@@ -184,13 +184,21 @@ public class BusquedaTitulos extends javax.swing.JFrame {
     private void verInfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verInfoBtnMouseClicked
         if (resultado != null) {
             String seleccion = (String) resultadosPersona.getSelectedItem();
-
             String[] separarSeleccion = seleccion.split(".");
 
             int numero = validar.validarNumeros(separarSeleccion[0]);
-            JOptionPane.showMessageDialog(null, resultado[numero].toString());
-           
-        }else{
+
+            if (numero != -1) { // Verifica que el número sea válido
+                if (validar.validarIndice(resultado.length - 1, 0, numero)) {
+                    String clave = resultado[numero].toString();
+                    JOptionPane.showMessageDialog(null, arbolApp.getTablaLinaje().buscar(clave));
+                } else {
+                    JOptionPane.showMessageDialog(null, "El número está fuera del índice.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un número válido.");
+            }
+        } else {
             JOptionPane.showMessageDialog(null, "No hay resultados para ver detalles.");
         }
     }//GEN-LAST:event_verInfoBtnMouseClicked

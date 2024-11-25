@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import Clases.Persona;
 import EDD.ListaSimple;
 import static Interfaces.CargarArchivo.arbolApp;
 import javax.swing.DefaultComboBoxModel;
@@ -38,7 +39,7 @@ public class VerGeneraciones extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         verGeneracion = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        menu = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,7 +53,6 @@ public class VerGeneraciones extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Escoja la generacion que desea ver:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 250, -1));
@@ -62,7 +62,6 @@ public class VerGeneraciones extends javax.swing.JFrame {
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 400, 230));
 
-        generacion.setBackground(new java.awt.Color(255, 255, 255));
         generacion.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         generacion.setForeground(new java.awt.Color(51, 51, 51));
         generacion.setModel(modeloResultado);
@@ -88,11 +87,16 @@ public class VerGeneraciones extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 51, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("MENÚ");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 50));
+        menu.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        menu.setForeground(new java.awt.Color(255, 255, 255));
+        menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menu.setText("MENÚ");
+        menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuMouseClicked(evt);
+            }
+        });
+        jPanel2.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 50));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 310, 50));
 
@@ -103,17 +107,25 @@ public class VerGeneraciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void verGeneracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verGeneracionMouseClicked
-       // int nivel = (int) numeroGeneracion.getSelectedItem();
-       // ListaSimple resultados = arbolApp.getArbolL().listarNivel(nivel);
+        //int nivel = (int) numeroGeneracion.getSelectedItem();
+        //ListaSimple resultados = arbolApp.getArbolL().listarNivel(nivel);
         
-       // String resultado = "Generacion: " + nivel + ":\n";
-       // for (int i = 0; i < resultados.getSize(); i++) {
+        //String resultado = "Generacion: " + nivel + ":\n";
+        //for (int i = 0; i < resultados.getSize(); i++) {
         //    Persona persona = (Persona) resultados.getValor(i);
         //    resultado += persona.toString() + "\n\n";
         //}
         
         //resultadoStr.setText(resultado);
     }//GEN-LAST:event_verGeneracionMouseClicked
+
+    private void menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMouseClicked
+        Menu m = new Menu();
+        m.setVisible(true);
+        m.setResizable(false);
+        m.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_menuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -155,10 +167,10 @@ public class VerGeneraciones extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> generacion;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel menu;
     private javax.swing.JLabel verGeneracion;
     // End of variables declaration//GEN-END:variables
 }

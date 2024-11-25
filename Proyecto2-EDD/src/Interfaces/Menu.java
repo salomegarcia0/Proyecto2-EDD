@@ -298,7 +298,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_cargarArchivoBtnMouseClicked
 
     private void buscarTituloBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarTituloBtnMouseClicked
-        BusquedaNombres bu = new BusquedaNombres();
+        BusquedaTitulos bu = new BusquedaTitulos();
         bu.setLocationRelativeTo(null);
         bu.setResizable(false);
         bu.setVisible(true);

@@ -21,6 +21,14 @@ public class VerGeneraciones extends javax.swing.JFrame {
      */
     public VerGeneraciones() {
         initComponents();
+        this.llenarComboBox();
+    }
+    
+    private void llenarComboBox() {
+        int max = arbolApp.getArbolL().maximoNivel();
+        for (int i = 1; i < max+1; i++) {
+            modeloResultado.addElement(i);
+        }
     }
 
     /**
@@ -34,8 +42,9 @@ public class VerGeneraciones extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         generacion = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        resultadoStr = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         verGeneracion = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -57,15 +66,16 @@ public class VerGeneraciones extends javax.swing.JFrame {
         jLabel3.setText("Escoja la generacion que desea ver:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 250, -1));
 
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 400, 230));
-
         generacion.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         generacion.setForeground(new java.awt.Color(51, 51, 51));
         generacion.setModel(modeloResultado);
         getContentPane().add(generacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 280, 50));
+
+        resultadoStr.setColumns(20);
+        resultadoStr.setRows(5);
+        jScrollPane1.setViewportView(resultadoStr);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 400, 240));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 0));
         jPanel1.setForeground(new java.awt.Color(0, 51, 0));
@@ -107,16 +117,16 @@ public class VerGeneraciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void verGeneracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verGeneracionMouseClicked
-        //int nivel = (int) numeroGeneracion.getSelectedItem();
-        //ListaSimple resultados = arbolApp.getArbolL().listarNivel(nivel);
+        int nivel = (int) generacion.getSelectedItem();
+        ListaSimple resultados = arbolApp.getArbolL().obtenerNodosEnNivel(nivel);
         
-        //String resultado = "Generacion: " + nivel + ":\n";
-        //for (int i = 0; i < resultados.getSize(); i++) {
-        //    Persona persona = (Persona) resultados.getValor(i);
-        //    resultado += persona.toString() + "\n\n";
-        //}
+        String resultado = "Generacion: " + nivel + ":\n";
+        for (int i = 0; i < resultados.getSize(); i++) {
+            Persona persona = (Persona) resultados.getValor(i);
+            resultado += persona.toString() + "\n\n";
+        }
         
-        //resultadoStr.setText(resultado);
+        resultadoStr.setText(resultado);
     }//GEN-LAST:event_verGeneracionMouseClicked
 
     private void menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMouseClicked
@@ -169,8 +179,9 @@ public class VerGeneraciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel menu;
+    private javax.swing.JTextArea resultadoStr;
     private javax.swing.JLabel verGeneracion;
     // End of variables declaration//GEN-END:variables
 }

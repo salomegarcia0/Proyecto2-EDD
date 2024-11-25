@@ -6,6 +6,7 @@ package Interfaces;
 
 import Clases.ArbolLinaje;
 import Funciones.Cargar;
+import Funciones.MostrarArbol;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -173,11 +174,11 @@ public class CargarArchivo extends javax.swing.JFrame {
         if(cargarJSON.sinError()){
             
             arbolApp = cargarJSON.getArbolLinaje();
-            arbolApp.getArbolL().mostrar();
-            Menu menu = new Menu();
-            menu.setLocationRelativeTo(null);
-            menu.setResizable(false);
-            menu.setVisible(true);
+            
+            System.setProperty("org.graphstream.ui", "swing");
+            MostrarArbol mostarArbol = new MostrarArbol(arbolApp.getArbolL());
+            mostarArbol.setVisible(true);
+            
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Hay errores en el JSON");

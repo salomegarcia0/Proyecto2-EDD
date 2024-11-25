@@ -6,8 +6,10 @@ package Interfaces;
 
 import Clases.Persona;
 import EDD.Arbol;
+import Funciones.MostrarArbol;
 import Funciones.Validar;
 import static Interfaces.CargarArchivo.arbolApp;
+import java.util.Arrays;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -16,18 +18,18 @@ import javax.swing.JOptionPane;
  * @author salom
  */
 public class BusquedaNombres extends javax.swing.JFrame {
-    
+
     DefaultComboBoxModel modeloResultado = new DefaultComboBoxModel();
     private Validar validar = new Validar();
     private Persona[] resultado;
-    
+
     /**
      * Creates new form BusquedaNombres
      */
     public BusquedaNombres() {
         initComponents();
     }
-    
+
     private void llenarComboBox(Persona[] arreglo) {
         for (int i = 0; i < arreglo.length; i++) {
             int numeroAsociado = i + 1;
@@ -35,7 +37,7 @@ public class BusquedaNombres extends javax.swing.JFrame {
             modeloResultado.addElement(nombreResultado);
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -183,31 +185,37 @@ public class BusquedaNombres extends javax.swing.JFrame {
     private void infoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoBtnMouseClicked
         if (resultado != null) {
             String seleccion = (String) resultadosPersona.getSelectedItem();
-
-            String[] separarSeleccion = seleccion.split(".");
-
-            int numero = validar.validarNumeros(separarSeleccion[0]);
+            //System.out.println(seleccion);
+            String[] separarSeleccion = seleccion.split(". ");
+            //System.out.println(Arrays.toString(separarSeleccion));
+            int numero = validar.validarNumeros(separarSeleccion[0]) - 1;
+            
 
             Arbol descendiente = new Arbol();
             descendiente.setRoot(arbolApp.getArbolL().buscar(resultado[numero].getNombreUnico()));
-        }else{
+
+            System.setProperty("org.graphstream.ui", "swing");
+            MostrarArbol mostarArbol = new MostrarArbol(descendiente);
+            mostarArbol.setVisible(true);
+            this.dispose();
+        } else {
             JOptionPane.showMessageDialog(null, "No hay resultados para ver detalles.");
         }
     }//GEN-LAST:event_infoBtnMouseClicked
 
     private void buscarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarBtnMouseClicked
-        if(!inputNombre.getText().isEmpty()){
+        if (!inputNombre.getText().isEmpty()) {
             String nombreBuscado = inputNombre.getText();
             if (arbolApp.buscarNombre(nombreBuscado) != null) {
-            resultado = arbolApp.buscarNombre(nombreBuscado);
-            this.llenarComboBox(arbolApp.buscarNombre(nombreBuscado));
+                resultado = arbolApp.buscarNombre(nombreBuscado);
+                this.llenarComboBox(arbolApp.buscarNombre(nombreBuscado));
             } else {
-            resultado = null;
-            JOptionPane.showMessageDialog(null, "No se encontraron resultados de la busqueda.");
+                resultado = null;
+                JOptionPane.showMessageDialog(null, "No se encontraron resultados de la busqueda.");
             }
             inputNombre.setText("");
-        }else{
-            JOptionPane.showMessageDialog(null,"Debe de ingresar un nombre.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe de ingresar un nombre.");
         }
     }//GEN-LAST:event_buscarBtnMouseClicked
 

@@ -30,7 +30,7 @@ public class BusquedaTitulos extends javax.swing.JFrame {
     private void llenarComboBox(Persona[] arreglo) {
         for (int i = 0; i < arreglo.length; i++) {
             int numeroAsociado = i + 1;
-            String nombreResultado = numeroAsociado + ". " + arreglo[i].getNombreUnico();
+            String nombreResultado = numeroAsociado + ". " + arreglo[i].getNombreUnico() + ", " + arreglo[i].getTituloMobiliario();
             modeloResultado.addElement(nombreResultado);
         }
     }
@@ -184,14 +184,14 @@ public class BusquedaTitulos extends javax.swing.JFrame {
     private void verInfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verInfoBtnMouseClicked
         if (resultado != null) {
             String seleccion = (String) resultadosPersona.getSelectedItem();
-            String[] separarSeleccion = seleccion.split(".");
+            String[] separarSeleccion = seleccion.split(". ");
 
-            int numero = validar.validarNumeros(separarSeleccion[0]);
+            int numero = validar.validarNumeros(separarSeleccion[0])-1;
 
             if (numero != -1) { // Verifica que el número sea válido
                 if (validar.validarIndice(resultado.length - 1, 0, numero)) {
-                    String clave = resultado[numero].toString();
-                    JOptionPane.showMessageDialog(null, arbolApp.getTablaLinaje().buscar(clave));
+                    
+                    JOptionPane.showMessageDialog(null, resultado[numero].toString());
                 } else {
                     JOptionPane.showMessageDialog(null, "El número está fuera del índice.");
                 }

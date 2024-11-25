@@ -21,6 +21,7 @@ public class Arbol {
      */
     private NodoArbol root;
 
+
     /**
      * Inicializa el árbol con un nodo raíz vacío.
      */

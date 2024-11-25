@@ -4,19 +4,40 @@
  */
 package Interfaces;
 
+import Clases.Persona;
+import EDD.Arbol;
+import EDD.ListaSimple;
+import EDD.NodoArbol;
+import Funciones.MostrarArbol;
+import Funciones.MostrarLinaje;
+import Funciones.Validar;
+import static Interfaces.CargarArchivo.arbolApp;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author salom
  */
 public class VerAntepasados extends javax.swing.JFrame {
-
+    
+    DefaultComboBoxModel modeloResultado = new DefaultComboBoxModel();
+    private Validar validar = new Validar();
+    private Persona[] resultado;
     /**
      * Creates new form VerAntepasados
      */
     public VerAntepasados() {
         initComponents();
     }
-
+    
+    private void llenarComboBox(Persona[] arreglo) {
+        for (int i = 0; i < arreglo.length; i++) {
+            int numeroAsociado = i + 1;
+            String nombreResultado = numeroAsociado + ". " + arreglo[i].getNombreUnico();
+            modeloResultado.addElement(nombreResultado);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,8 +51,8 @@ public class VerAntepasados extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         buscarBtn = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        inputNombre = new javax.swing.JTextField();
+        resultadosPersona = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         verInfoBtn = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -70,13 +91,13 @@ public class VerAntepasados extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 110, 50));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 300, 50));
+        inputNombre.setBackground(new java.awt.Color(255, 255, 255));
+        inputNombre.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(inputNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 300, 50));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 450, 50));
+        resultadosPersona.setBackground(new java.awt.Color(255, 255, 255));
+        resultadosPersona.setModel(modeloResultado);
+        getContentPane().add(resultadosPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 450, 50));
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 0));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -122,10 +143,40 @@ public class VerAntepasados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarBtnMouseClicked
-        
+        if (!inputNombre.getText().isEmpty()) {
+            String nombreBuscado = inputNombre.getText();
+            if (arbolApp.buscarNombreAntepasado(nombreBuscado) != null) {
+                resultado = arbolApp.buscarNombreAntepasado(nombreBuscado);
+                this.llenarComboBox(arbolApp.buscarNombreAntepasado(nombreBuscado));
+            } else {
+                resultado = null;
+                JOptionPane.showMessageDialog(null, "No se encontraron resultados de la busqueda.");
+            }
+            inputNombre.setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe de ingresar un nombre.");
+        }
     }//GEN-LAST:event_buscarBtnMouseClicked
 
     private void verInfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verInfoBtnMouseClicked
+        if (resultado != null) {
+            String seleccion = (String) resultadosPersona.getSelectedItem();
+            //System.out.println(seleccion);
+            String[] separarSeleccion = seleccion.split(". ");
+            //System.out.println(Arrays.toString(separarSeleccion));
+            int numero = validar.validarNumeros(separarSeleccion[0]) - 1;
+            NodoArbol nodo = arbolApp.getArbolL().buscarNombre(resultado[numero].getNombreUnico());
+            ListaSimple listaAntepasados =  arbolApp.getArbolL().buscarAncestros(nodo);
+            
+            System.setProperty("org.graphstream.ui", "swing");
+            MostrarLinaje mostarArbol = new MostrarLinaje(listaAntepasados);
+            mostarArbol.setVisible(true);
+            this.dispose();
+            
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay resultados para ver detalles.");
+        }
         
     }//GEN-LAST:event_verInfoBtnMouseClicked
 
@@ -174,15 +225,15 @@ public class VerAntepasados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel buscarBtn;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField inputNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel menu;
+    private javax.swing.JComboBox<String> resultadosPersona;
     private javax.swing.JLabel verInfoBtn;
     // End of variables declaration//GEN-END:variables
 }

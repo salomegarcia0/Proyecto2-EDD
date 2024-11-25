@@ -134,6 +134,22 @@ public class ArbolLinaje {
 
         return null;
     }
+    
+    public Persona[] buscarNombreAntepasado(String nombre) {
+        ListaSimple resultados = this.tablaLinaje.buscarNombreCoincidencias(nombre);
+
+        if (!resultados.isEmpty()) {
+            Persona[] arregloPersona = new Persona[resultados.getSize()];
+            for (int i = 0; i < resultados.getSize(); i++) {
+                Persona persona = (Persona) resultados.getValor(i);
+                arregloPersona[i] = persona;
+            }
+
+            return arregloPersona;
+        }
+
+        return null;
+    }
 
     /**
     * Busca personas por título de mobiliario en la tabla hash del linaje.

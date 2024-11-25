@@ -9,7 +9,6 @@ import EDD.Arbol;
 import Funciones.MostrarArbol;
 import Funciones.Validar;
 import static Interfaces.CargarArchivo.arbolApp;
-import java.util.Arrays;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 

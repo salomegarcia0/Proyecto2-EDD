@@ -96,14 +96,6 @@ public class MostrarArbol extends JFrame{
         }
     }
 
-    private void mostrarInfoPersona(Persona persona) {
-        String info = "Información de la Persona:\n"
-                + "Nombre: " + persona.getNombre()+ "\n"
-                + "Padre: " + persona.getPadre() + "\n"
-                + "Madre: " + persona.getMadre();
-        JOptionPane.showMessageDialog(this, info, "Detalles de Persona", JOptionPane.INFORMATION_MESSAGE);
-    }
-
    /**
      * Configura el botón para volver al menú principal.
      */

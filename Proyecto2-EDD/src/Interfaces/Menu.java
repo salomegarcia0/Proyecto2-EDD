@@ -144,8 +144,8 @@ public class Menu extends javax.swing.JFrame {
             buscarPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buscarPnlLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(buscarTituloBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                .addComponent(buscarTituloBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel1.add(buscarPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 340, 50));
@@ -198,9 +198,7 @@ public class Menu extends javax.swing.JFrame {
         );
         mostrarArbolPnlLayout.setVerticalGroup(
             mostrarArbolPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostrarArbolPnlLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(mostrarArbolBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+            .addComponent(mostrarArbolBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         jPanel1.add(mostrarArbolPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 340, 50));

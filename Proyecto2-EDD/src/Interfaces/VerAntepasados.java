@@ -33,9 +33,9 @@ public class VerAntepasados extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        verInfoBtn = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        menu = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,6 +61,11 @@ public class VerAntepasados extends javax.swing.JFrame {
         buscarBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         buscarBtn.setText("BUSCAR");
         buscarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buscarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarBtnMouseClicked(evt);
+            }
+        });
         jPanel1.add(buscarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 110, 50));
@@ -77,12 +82,17 @@ public class VerAntepasados extends javax.swing.JFrame {
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("VER INFORMACIÓN");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 50));
+        verInfoBtn.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        verInfoBtn.setForeground(new java.awt.Color(255, 255, 255));
+        verInfoBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        verInfoBtn.setText("VER INFORMACIÓN");
+        verInfoBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verInfoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verInfoBtnMouseClicked(evt);
+            }
+        });
+        jPanel2.add(verInfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 50));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 210, 50));
 
@@ -90,12 +100,17 @@ public class VerAntepasados extends javax.swing.JFrame {
         jPanel3.setForeground(new java.awt.Color(0, 51, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("MENÚ");
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 50));
+        menu.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        menu.setForeground(new java.awt.Color(255, 255, 255));
+        menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menu.setText("MENÚ");
+        menu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuMouseClicked(evt);
+            }
+        });
+        jPanel3.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 50));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 270, 50));
 
@@ -105,6 +120,22 @@ public class VerAntepasados extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buscarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarBtnMouseClicked
+        
+    }//GEN-LAST:event_buscarBtnMouseClicked
+
+    private void verInfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verInfoBtnMouseClicked
+        
+    }//GEN-LAST:event_verInfoBtnMouseClicked
+
+    private void menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMouseClicked
+        Menu m = new Menu();
+        m.setVisible(true);
+        m.setResizable(false);
+        m.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_menuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -147,11 +178,11 @@ public class VerAntepasados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel menu;
+    private javax.swing.JLabel verInfoBtn;
     // End of variables declaration//GEN-END:variables
 }
